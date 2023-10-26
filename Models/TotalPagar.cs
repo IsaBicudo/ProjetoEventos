@@ -28,7 +28,7 @@ namespace ProjetoEventos.Models
 
         [ForeignKey("DecoracaoId")]
         public int DecoracaoId { get; set; }
-        public Decoracao? Decoacao { get; set; }
+        public Decoracao? Decoracao { get; set; }
 
         [ForeignKey("BuffetId")]
         public int BuffetId { get; set; }
