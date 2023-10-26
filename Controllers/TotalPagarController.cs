@@ -19,10 +19,34 @@ namespace ProjetoEventos.Controllers
         }
 
         // GET: TotalPagar
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.TotalPagar.Include(t => t.Buffet).Include(t => t.Cliente).Include(t => t.Convidado).Include(t => t.Decoracao).Include(t => t.Horario).Include(t => t.Local).Include(t => t.TipoEvento);
-            return View(await contexto.ToListAsync());
+            if (pesquisa == null)
+            {
+                return _context.TotalPagar != null ?
+                         View(await _context.TotalPagar.Include(x => x.Cliente)
+                               .Include(x => x.Convidado)
+                               .Include(x => x.Local)
+                               .Include(x => x.Horario)
+                               .Include(x => x.Decoracao)
+                               .Include(x => x.Buffet)
+                               .Include(x => x.TipoEvento).ToListAsync()) :
+                         Problem("Entity set 'Contexto.TotalPagar'  is null.");
+            }
+            else
+            {
+                var totalpagar = _context.TotalPagar
+                               .Include(x => x.Cliente)
+                               .Include(x => x.Convidado)
+                               .Include(x => x.Local)
+                               .Include(x => x.Horario)
+                               .Include(x => x.Decoracao)
+                               .Include(x => x.Buffet)
+                               .Include(x => x.TipoEvento)
+                               .Where(x => x.Cliente.ClienteNome.Contains(pesquisa)).ToListAsync();
+
+                return View(totalpagar);
+            }
         }
 
         // GET: TotalPagar/Details/5
