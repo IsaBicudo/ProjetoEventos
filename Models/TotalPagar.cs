@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace ProjetoEventos.Models
 {
@@ -14,9 +15,9 @@ namespace ProjetoEventos.Models
         public int ClienteId { get; set; }
         public Cliente? Cliente { get; set; }
 
-        [ForeignKey("ConvidadoId")]
-        public int ConvidadoId { get; set; }
-        public Convidado? Convidado { get; set; }
+        [Column ("QuantidadeConvidados")]
+        [Display (Name = "Quantidade de Convidados")]
+        public int QuantidadeConvidados { get; set; }
 
         [ForeignKey("LocalId")]
         public int LocalId { get; set; }

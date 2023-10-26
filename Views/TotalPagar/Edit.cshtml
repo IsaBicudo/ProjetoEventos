@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar</h1>
+<h1>Edit</h1>
 
-<h4>Total à Pagar</h4>
+<h4>TotalPagar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,9 +19,9 @@
                 <span asp-validation-for="ClienteId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConvidadoId" class="control-label"></label>
-                <select asp-for="ConvidadoId" class="form-control" asp-items="ViewBag.ConvidadoId"></select>
-                <span asp-validation-for="ConvidadoId" class="text-danger"></span>
+                <label asp-for="QuantidadeConvidados" class="control-label"></label>
+                <input asp-for="QuantidadeConvidados" class="form-control" />
+                <span asp-validation-for="QuantidadeConvidados" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LocalId" class="control-label"></label>
@@ -61,7 +61,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Voltar para à lista</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -19,34 +19,10 @@ namespace ProjetoEventos.Controllers
         }
 
         // GET: TotalPagar
-        public async Task<IActionResult> Index(string pesquisa)
+        public async Task<IActionResult> Index()
         {
-            if (pesquisa == null)
-            {
-                return _context.TotalPagar != null ?
-                         View(await _context.TotalPagar.Include(x => x.Cliente)
-                               .Include(x => x.Convidado)
-                               .Include(x => x.Local)
-                               .Include(x => x.Horario)
-                               .Include(x => x.Decoracao)
-                               .Include(x => x.Buffet)
-                               .Include(x => x.TipoEvento).ToListAsync()) :
-                         Problem("Entity set 'Contexto.TotalPagar'  is null.");
-            }
-            else
-            {
-                var totalpagar = _context.TotalPagar
-                               .Include(x => x.Cliente)
-                               .Include(x => x.Convidado)
-                               .Include(x => x.Local)
-                               .Include(x => x.Horario)
-                               .Include(x => x.Decoracao)
-                               .Include(x => x.Buffet)
-                               .Include(x => x.TipoEvento)
-                               .Where(x => x.Cliente.ClienteNome.Contains(pesquisa)).ToListAsync();
-
-                return View(totalpagar);
-            }
+            var contexto = _context.TotalPagar.Include(t => t.Buffet).Include(t => t.Cliente).Include(t => t.Decoracao).Include(t => t.Horario).Include(t => t.Local).Include(t => t.TipoEvento);
+            return View(await contexto.ToListAsync());
         }
 
         // GET: TotalPagar/Details/5
@@ -60,7 +36,6 @@ namespace ProjetoEventos.Controllers
             var totalPagar = await _context.TotalPagar
                 .Include(t => t.Buffet)
                 .Include(t => t.Cliente)
-                .Include(t => t.Convidado)
                 .Include(t => t.Decoracao)
                 .Include(t => t.Horario)
                 .Include(t => t.Local)
@@ -77,13 +52,12 @@ namespace ProjetoEventos.Controllers
         // GET: TotalPagar/Create
         public IActionResult Create()
         {
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo");
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome");
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal");
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo");
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento");
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome");
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo");
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id");
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id");
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id");
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id");
             return View();
         }
 
@@ -92,7 +66,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteId,ConvidadoId,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,QuantidadeConvidados,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
         {
             if (ModelState.IsValid)
             {
@@ -100,13 +74,12 @@ namespace ProjetoEventos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -123,13 +96,12 @@ namespace ProjetoEventos.Controllers
             {
                 return NotFound();
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -138,7 +110,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,ConvidadoId,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,QuantidadeConvidados,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
         {
             if (id != totalPagar.Id)
             {
@@ -165,13 +137,12 @@ namespace ProjetoEventos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -186,7 +157,6 @@ namespace ProjetoEventos.Controllers
             var totalPagar = await _context.TotalPagar
                 .Include(t => t.Buffet)
                 .Include(t => t.Cliente)
-                .Include(t => t.Convidado)
                 .Include(t => t.Decoracao)
                 .Include(t => t.Horario)
                 .Include(t => t.Local)
