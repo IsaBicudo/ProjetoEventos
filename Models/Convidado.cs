@@ -8,7 +8,7 @@ namespace ProjetoEventos.Models
     {
         [Column("ConvidadoId")]
         [Display(Name = "Código do Convidado")]
-        public int ConvidadoId { get; set; }
+        public int Id { get; set; }
 
         [Column("ConvidadoTotal")]
         [Display(Name = "Total de Convidados")]

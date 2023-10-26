@@ -8,7 +8,7 @@ namespace ProjetoEventos.Models
     {
         [Column("TipoEventoId")]
         [Display(Name = "Código do Tipo de Evento")]
-        public int TipoEventoId { get; set; }
+        public int Id { get; set; }
 
         [Column("EventoTipo")]
         [Display(Name = "Tipo de Evento")]

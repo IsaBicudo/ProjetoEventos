@@ -10,7 +10,7 @@ namespace ProjetoEventos.Models
 
         [Column("HorarioId")]
         [Display(Name = "Código do Horario")]
-        public int HorarioId { get; set; }
+        public int Id { get; set; }
 
         [Column("HorarioEvento")]
         [Display(Name = "Agendar Horario")]

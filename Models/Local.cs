@@ -8,7 +8,7 @@ namespace ProjetoEventos.Models
     {
         [Column("LocalId")]
         [Display(Name = "Código do Local")]
-        public int LocalId { get; set; }
+        public int Id { get; set; }
 
         [Column("LocalNome")]
         [Display(Name = "Nome do Local")]

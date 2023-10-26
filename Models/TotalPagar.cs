@@ -8,7 +8,7 @@ namespace ProjetoEventos.Models
     {
         [Column("TotalPagarId")]
         [Display(Name = "Código do Total a Pagar")]
-        public int TotalPagarId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("ClienteId")]
         public int ClienteId { get; set; }
