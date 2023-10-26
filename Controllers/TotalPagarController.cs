@@ -77,13 +77,13 @@ namespace ProjetoEventos.Controllers
         // GET: TotalPagar/Create
         public IActionResult Create()
         {
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id");
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "Id");
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id");
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id");
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id");
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id");
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome");
+            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal");
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo");
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento");
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome");
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo");
             return View();
         }
 
@@ -100,13 +100,13 @@ namespace ProjetoEventos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "Id", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -123,13 +123,13 @@ namespace ProjetoEventos.Controllers
             {
                 return NotFound();
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "Id", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -165,13 +165,13 @@ namespace ProjetoEventos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "Id", totalPagar.ConvidadoId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["ConvidadoId"] = new SelectList(_context.Convidado, "Id", "ConvidadoTotal", totalPagar.ConvidadoId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "HorarioEvento", totalPagar.HorarioId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
