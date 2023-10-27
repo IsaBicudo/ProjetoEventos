@@ -32,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Horario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Horario.Id)
+            @Html.DisplayFor(model => model.Horario)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Decoracao)
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Voltar para à lista</a>
+    <button><a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a></button>
+    <button><a asp-action="Index">Voltar para à lista</a></button>
 </div>

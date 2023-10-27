@@ -11,7 +11,7 @@ namespace ProjetoEventos.Models
         public int Id { get; set; }
 
         [Column("DecoracaoTipo")]
-        [Display(Name = "Tipo de Decoracao")]
+        [Display(Name = "Tipo de Decoração")]
         public string DecoracaoTipo { get; set; } = string.Empty;
 
     }

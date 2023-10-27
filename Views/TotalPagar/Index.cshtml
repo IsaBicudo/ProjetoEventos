@@ -7,7 +7,7 @@
 <h1>Lista de Evento</h1>
 
 <p>
-    <a asp-action="Create">Cadastrar</a>
+    <button><a asp-action="Create">Cadastrar</a></button>
 </p>
 <div>
     @using (Html.BeginForm("Index", "TotalPagar", FormMethod.Get))
@@ -61,7 +61,7 @@
                     @Html.DisplayFor(modelItem => item.Local.LocalNome)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Horario.HorarioEvento)
+                    @Html.DisplayFor(modelItem => item.Horario)
             </td>
             <td>
                     @Html.DisplayFor(modelItem => item.Decoracao.DecoracaoTipo)
@@ -76,9 +76,9 @@
                 @Html.DisplayFor(modelItem => item.TotalValor)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                <button><a asp-action="Edit" asp-route-id="@item.Id">Editar</a></button> 
+                <button><a asp-action="Details" asp-route-id="@item.Id">Detalhes</a></button> 
+                <button><a asp-action="Delete" asp-route-id="@item.Id">Deletar</a></button>
             </td>
         </tr>
 }
