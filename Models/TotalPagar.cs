@@ -24,7 +24,7 @@ namespace ProjetoEventos.Models
         public Local? Local { get; set; }
 
         [Column("Horario")]
-        [Display(Name = "Horario")]
+        [Display(Name = "Horário")]
         public DateTime Horario { get; set; }
 
         [ForeignKey("DecoracaoId")]
