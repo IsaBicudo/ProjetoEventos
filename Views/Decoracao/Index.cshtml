@@ -7,7 +7,7 @@
 <h1>Lista de Decoração</h1>
 
 <p>
-    <a asp-action="Create">Cadastrar</a>
+    <button><a asp-action="Create">Cadastrar</a></button>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.DecoracaoTipo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                <button><a asp-action="Edit" asp-route-id="@item.Id">Editar</a> </button>
+                <button><a asp-action="Details" asp-route-id="@item.Id">Detalhes</a></button>
+                <button><a asp-action="Delete" asp-route-id="@item.Id">Deletar</a></button>
             </td>
         </tr>
 }
