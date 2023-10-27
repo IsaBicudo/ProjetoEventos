@@ -43,25 +43,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Id)
+                    @Html.DisplayFor(modelItem => item.Cliente.ClienteNome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuantidadeConvidados)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Local.Id)
+                    @Html.DisplayFor(modelItem => item.Local.LocalNome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Horario.Id)
+                    @Html.DisplayFor(modelItem => item.Horario.HorarioEvento)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Decoracao.Id)
+                    @Html.DisplayFor(modelItem => item.Decoracao.DecoracaoTipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Buffet.Id)
+                    @Html.DisplayFor(modelItem => item.Buffet.BuffetTipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoEvento.Id)
+                    @Html.DisplayFor(modelItem => item.TipoEvento.EventoTipo )
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalValor)
