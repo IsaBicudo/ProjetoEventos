@@ -19,10 +19,29 @@ namespace ProjetoEventos.Controllers
         }
 
         // GET: TotalPagar
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.TotalPagar.Include(t => t.Buffet).Include(t => t.Cliente).Include(t => t.Decoracao).Include(t => t.Horario).Include(t => t.Local).Include(t => t.TipoEvento);
-            return View(await contexto.ToListAsync());
+            if(pesquisa == null)
+            {
+                var contexto = _context.TotalPagar.Include(t => t.Buffet)
+                                                               .Include(t => t.Cliente)
+                                                               .Include(t => t.Decoracao)
+                                                               .Include(t => t.Horario)
+                                                               .Include(t => t.Local)
+                                                               .Include(t => t.TipoEvento);
+                return View(await contexto.ToListAsync());
+            }
+            else
+            {
+                var contexto = _context.TotalPagar.Include(t => t.Buffet)
+                                                               .Include(t => t.Cliente)
+                                                               .Include(t => t.Decoracao)
+                                                               .Include(t => t.Horario)
+                                                               .Include(t => t.Local)
+                                                               .Include(t => t.TipoEvento)
+                                                               .Where(t=> t.Cliente.ClienteNome.Contains(pesquisa));
+                return View(await contexto.ToListAsync());
+            }           
         }
 
         // GET: TotalPagar/Details/5
