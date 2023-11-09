@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-/*builder.Services.AddDbContext<Contexto> //Isabella
-    (options => options.UseSqlServer("Data Source=SB-1490627\\SQLSENAI;Initial Catalog = ProjetoEventos;Integrated Security = True;TrustServerCertificate = True"));*/
+builder.Services.AddDbContext<Contexto> //Isabella
+    (options => options.UseSqlServer("Data Source=SB-1490627\\SQLSENAI;Initial Catalog = ProjetoEventos;Integrated Security = True;TrustServerCertificate = True"));
 
 /*builder.Services.AddDbContext<Contexto> //Paola 
     (options => options.UseSqlServer("Data Source=SB-1490646\\SQLSENAI;Initial Catalog = ProjetoEventos;Integrated Security = True;TrustServerCertificate = True"));*/
