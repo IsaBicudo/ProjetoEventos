@@ -16,7 +16,7 @@ namespace ProjetoEventos.Models
         public Cliente? Cliente { get; set; }
 
         [Column ("QuantidadeConvidados")]
-        [Display (Name = "Quantidade de Convidados")]
+        [Display (Name = "Convidados")]
         public int QuantidadeConvidados { get; set; }
 
         [ForeignKey("LocalId")]
@@ -40,10 +40,11 @@ namespace ProjetoEventos.Models
 
         [ForeignKey("TipoEventoId")]
         public int TipoEventoId { get; set; }
+        [Display(Name = "Evento")]
         public TipoEvento? TipoEvento { get; set; }
 
         [Column("TotalValor")]
-        [Display(Name = "Total do Valor")]
+        [Display(Name = "Valor")]
         public double TotalValor { get; set; } 
 
     }
