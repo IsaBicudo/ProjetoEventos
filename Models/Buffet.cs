@@ -14,5 +14,17 @@ namespace ProjetoEventos.Models
         [Display(Name = "Tipo do Buffet")]
         public string BuffetTipo { get; set; } = string.Empty;
 
+        [Column("ImagemBuffet1")]
+        [Display(Name = "Imagem")]
+        public string ImagemBuffet1 { get; set; } = string.Empty;
+
+        [Column("ImagemBuffet2")]
+        [Display(Name = "Imagem")]
+        public string ImagemBuffet2 { get; set; } = string.Empty;
+
+        [Column("ImagemBuffet3")]
+        [Display(Name = "Imagem")]
+        public string ImagemBuffet3 { get; set; } = string.Empty;
+
     }
 }

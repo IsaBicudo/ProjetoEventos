@@ -17,6 +17,17 @@
             @Html.DisplayFor(model => model.BuffetTipo)
         </dd>
     </dl>
+    <div class="row">
+        <div>
+            <img src="@Url.Content(Model.ImagemBuffet1)" class="img-geral"/>
+        </div>
+        <div>
+            <img src="@Url.Content(Model.ImagemBuffet2)" class="img-geral" />
+        </div>
+        <div>
+            <img src="@Url.Content(Model.ImagemBuffet3)" class="img-geral" />
+        </div>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>

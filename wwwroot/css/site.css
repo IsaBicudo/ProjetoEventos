@@ -37,6 +37,18 @@ body {
     background-color: #8FBDDF !important;
     color: white !important;
 }
+.btn-segundo {
+    margin: 5px;
+    background: none !important;
+    color: #8FBDDF !important;
+    border: 2px #8FBDDF solid !important;
+    border-radius: 4px !important;
+}
+.btn-segundo:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border: 2px #dc3545 solid !important;
+    }
 .input-validation-error {
     border-radius: 5px !important;
     border: 1px solid #8FBDDF;
@@ -55,4 +67,11 @@ body {
 }
 .table {
     font-size: 16px;
+}
+.img-geral {
+    width: 213px;
+    height: 158px;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

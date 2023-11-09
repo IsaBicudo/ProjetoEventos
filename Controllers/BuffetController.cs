@@ -55,7 +55,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BuffetTipo")] Buffet buffet)
+        public async Task<IActionResult> Create([Bind("Id,BuffetTipo,ImagemBuffet1,ImagemBuffet2,ImagemBuffet3")] Buffet buffet)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BuffetTipo")] Buffet buffet)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BuffetTipo,ImagemBuffet1,ImagemBuffet2,ImagemBuffet3")] Buffet buffet)
         {
             if (id != buffet.Id)
             {

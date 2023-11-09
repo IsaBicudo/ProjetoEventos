@@ -14,6 +14,18 @@ namespace ProjetoEventos.Models
         [Display(Name = "Nome do Local")]
         public string LocalNome { get; set; } = string.Empty;
 
-        
+        [Column("ImagemLocal1")]
+        [Display(Name = "Imagem")]
+        public string ImagemLocal1 { get; set; } = string.Empty;
+
+        [Column("ImagemLocal2")]
+        [Display(Name = "Imagem")]
+        public string ImagemLocal2 { get; set; } = string.Empty;
+
+        [Column("ImagemLocal3")]
+        [Display(Name = "Imagem")]
+        public string ImagemLocal3 { get; set; } = string.Empty;
+
+
     }
 }

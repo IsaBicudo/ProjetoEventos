@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoEventos.Models;
 
@@ -11,9 +12,11 @@ using ProjetoEventos.Models;
 namespace ProjetoEventos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231109131537_Criacao-ImagemDecoracao")]
+    partial class CriacaoImagemDecoracao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,21 +38,6 @@ namespace ProjetoEventos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("BuffetTipo");
-
-                    b.Property<string>("ImagemBuffet1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemBuffet1");
-
-                    b.Property<string>("ImagemBuffet2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemBuffet2");
-
-                    b.Property<string>("ImagemBuffet3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemBuffet3");
 
                     b.HasKey("Id");
 
@@ -144,21 +132,6 @@ namespace ProjetoEventos.Migrations
                         .HasColumnName("LocalId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagemLocal1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemLocal1");
-
-                    b.Property<string>("ImagemLocal2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemLocal2");
-
-                    b.Property<string>("ImagemLocal3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ImagemLocal3");
 
                     b.Property<string>("LocalNome")
                         .IsRequired()

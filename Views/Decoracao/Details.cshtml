@@ -15,8 +15,19 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DecoracaoTipo)
-        </dd>
-    </dl>
+        </dd>       
+    </dl>   
+    <div class="row">
+        <div>
+            <img src="@Url.Content(Model.ImagemDecoracao1)" class="img-geral" />
+        </div>
+        <div>
+            <img src="@Url.Content(Model.ImagemDecoracao2)" class="img-geral" />
+        </div>
+        <div>
+            <img src="@Url.Content(Model.ImagemDecoracao3)" class="img-geral" />
+        </div>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
