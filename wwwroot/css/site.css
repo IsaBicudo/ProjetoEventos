@@ -32,6 +32,7 @@ body {
     color: #8FBDDF !important;
     border: 2px #8FBDDF solid !important;
     border-radius: 4px !important;
+    padding: 0.150rem 0.250rem !important;
 }
 .btn-primary:hover {
     background-color: #8FBDDF !important;
@@ -60,6 +61,7 @@ body {
     color: #dc3545 !important;
     border: 2px #dc3545 solid !important;
     border-radius: 4px !important;
+    padding: 0.150rem 0.250rem !important;
 }
 .btn-danger:hover {
     background-color: #dc3545 !important;
