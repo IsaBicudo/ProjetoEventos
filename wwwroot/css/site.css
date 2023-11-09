@@ -15,6 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    font-family: FreeMono, monospace;
 }
 
 .header {
@@ -52,4 +53,6 @@ body {
     background-color: #dc3545 !important;
     color: white !important;
 }
-
+.table {
+    font-size: 16px;
+}

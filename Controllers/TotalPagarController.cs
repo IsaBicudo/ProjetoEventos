@@ -71,6 +71,7 @@ namespace ProjetoEventos.Controllers
             ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo");
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome");
             ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo");
+            //teste
             ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome");
             ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo");
             return View();
