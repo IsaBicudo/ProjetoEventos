@@ -52,7 +52,7 @@ namespace ProjetoEventos.Controllers
         // GET: TotalPagar/Create
         public IActionResult Create()
         {
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id");
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "ID");
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
             ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id");
             ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id");
