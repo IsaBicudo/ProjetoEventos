@@ -7,7 +7,7 @@ namespace ProjetoEventos.Models
     public class Decoracao
     {
         [Column("DecoracaoId")]
-        [Display(Name = "Código da Decoracao")]
+        [Display(Name = "Código da Decoração")]
         public int Id { get; set; }
 
         [Column("DecoracaoTipo")]

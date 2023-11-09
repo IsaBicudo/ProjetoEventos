@@ -28,7 +28,10 @@ namespace ProjetoEventos.Models
         public DateTime Horario { get; set; }
 
         [ForeignKey("DecoracaoId")]
+        [Display(Name = "Decoração")]
         public int DecoracaoId { get; set; }
+        
+        [Display(Name = "Decoração")]
         public Decoracao? Decoracao { get; set; }
 
         [ForeignKey("BuffetId")]
