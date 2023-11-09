@@ -44,6 +44,7 @@ body {
     color: #8FBDDF !important;
     border: 2px #8FBDDF solid !important;
     border-radius: 4px !important;
+    padding: 0.150rem 0.250rem !important;
 }
 .btn-segundo:hover {
     background-color: #dc3545 !important;
