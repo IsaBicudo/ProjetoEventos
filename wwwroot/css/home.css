@@ -1,0 +1,13 @@
+﻿body {
+    background-image: url(/imagem/fundoazul.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.display-4 {
+    font-size: 30px;
+    color: white;
+    font-family: system-ui;
+    text-align: center;
+    margin-top: 25rem;
+    margin-right: 2rem;
+}

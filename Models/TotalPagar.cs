@@ -23,9 +23,9 @@ namespace ProjetoEventos.Models
         public int LocalId { get; set; }
         public Local? Local { get; set; }
 
-        [ForeignKey("HorarioId")]
-        public int HorarioId { get; set; }
-        public Horario? Horario { get; set; }
+        [Column("Horario")]
+        [Display(Name = "Horário")]
+        public DateTime Horario { get; set; }
 
         [ForeignKey("DecoracaoId")]
         public int DecoracaoId { get; set; }

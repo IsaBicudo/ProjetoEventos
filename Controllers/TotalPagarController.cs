@@ -19,10 +19,27 @@ namespace ProjetoEventos.Controllers
         }
 
         // GET: TotalPagar
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.TotalPagar.Include(t => t.Buffet).Include(t => t.Cliente).Include(t => t.Decoracao).Include(t => t.Horario).Include(t => t.Local).Include(t => t.TipoEvento);
-            return View(await contexto.ToListAsync());
+            if(pesquisa == null)
+            {
+                var contexto = _context.TotalPagar.Include(t => t.Buffet)
+                                                               .Include(t => t.Cliente)
+                                                               .Include(t => t.Decoracao)
+                                                               .Include(t => t.Local)
+                                                               .Include(t => t.TipoEvento);
+                return View(await contexto.ToListAsync());
+            }
+            else
+            {
+                var contexto = _context.TotalPagar.Include(t => t.Buffet)
+                                                               .Include(t => t.Cliente)
+                                                               .Include(t => t.Decoracao)
+                                                               .Include(t => t.Local)
+                                                               .Include(t => t.TipoEvento)
+                                                               .Where(t=> t.Cliente.ClienteNome.Contains(pesquisa));
+                return View(await contexto.ToListAsync());
+            }           
         }
 
         // GET: TotalPagar/Details/5
@@ -37,7 +54,6 @@ namespace ProjetoEventos.Controllers
                 .Include(t => t.Buffet)
                 .Include(t => t.Cliente)
                 .Include(t => t.Decoracao)
-                .Include(t => t.Horario)
                 .Include(t => t.Local)
                 .Include(t => t.TipoEvento)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -52,7 +68,7 @@ namespace ProjetoEventos.Controllers
         // GET: TotalPagar/Create
         public IActionResult Create()
         {
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "ID");
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id");
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
             ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id");
             ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id");
@@ -66,7 +82,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteId,QuantidadeConvidados,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,QuantidadeConvidados,LocalId, Horario, DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
         {
             if (ModelState.IsValid)
             {
@@ -74,12 +90,11 @@ namespace ProjetoEventos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -96,12 +111,11 @@ namespace ProjetoEventos.Controllers
             {
                 return NotFound();
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -110,7 +124,7 @@ namespace ProjetoEventos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,QuantidadeConvidados,LocalId,HorarioId,DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,QuantidadeConvidados,LocalId, Horario, DecoracaoId,BuffetId,TipoEventoId,TotalValor")] TotalPagar totalPagar)
         {
             if (id != totalPagar.Id)
             {
@@ -137,12 +151,11 @@ namespace ProjetoEventos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "Id", totalPagar.BuffetId);
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", totalPagar.ClienteId);
-            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "Id", totalPagar.DecoracaoId);
-            ViewData["HorarioId"] = new SelectList(_context.Horario, "Id", "Id", totalPagar.HorarioId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "Id", totalPagar.LocalId);
-            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "Id", totalPagar.TipoEventoId);
+            ViewData["BuffetId"] = new SelectList(_context.Buffet, "Id", "BuffetTipo", totalPagar.BuffetId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "ClienteNome", totalPagar.ClienteId);
+            ViewData["DecoracaoId"] = new SelectList(_context.Decoracao, "Id", "DecoracaoTipo", totalPagar.DecoracaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "Id", "LocalNome", totalPagar.LocalId);
+            ViewData["TipoEventoId"] = new SelectList(_context.TipoEvento, "Id", "EventoTipo", totalPagar.TipoEventoId);
             return View(totalPagar);
         }
 
@@ -158,7 +171,6 @@ namespace ProjetoEventos.Controllers
                 .Include(t => t.Buffet)
                 .Include(t => t.Cliente)
                 .Include(t => t.Decoracao)
-                .Include(t => t.Horario)
                 .Include(t => t.Local)
                 .Include(t => t.TipoEvento)
                 .FirstOrDefaultAsync(m => m.Id == id);

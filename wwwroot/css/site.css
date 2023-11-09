@@ -16,3 +16,39 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.header {
+    background-color: #8FBDDF;
+}
+
+.logo {
+    width: 196px;
+    height: 62px;
+}
+.btn-primary {
+    margin: 5px;
+    background: none !important;
+    color: #8FBDDF !important;
+    border: 2px #8FBDDF solid !important;
+    border-radius: 4px !important;
+}
+.btn-primary:hover {
+    background-color: #8FBDDF !important;
+    color: white !important;
+}
+.input-validation-error {
+    border-radius: 5px !important;
+    border: 1px solid #8FBDDF;
+    height: 37.5px;
+}
+.btn-danger {
+    margin: 5px;
+    background: none !important;
+    color: #dc3545 !important;
+    border: 2px #dc3545 solid !important;
+    border-radius: 4px !important;
+}
+.btn-danger:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
