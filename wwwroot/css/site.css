@@ -77,4 +77,6 @@ body {
     margin: 5px;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 5px;
+    object-fit:cover;
 }
